@@ -2,11 +2,15 @@ import { Button } from '@/components/button'
 import { CurrencyInput } from '@/components/currency-input'
 import { Input } from '@/components/input'
 import { PageHeader } from '@/components/page-header'
+import { TransactionType } from '@/components/TransactionType'
+import { TransactionTypes } from '@/utils/types'
 import { useLocalSearchParams } from 'expo-router'
+import { useState } from 'react'
 import { View } from 'react-native'
 
 export default function Transaction() {
   const params = useLocalSearchParams<{ id: string }>()
+  const [type, setType] = useState(TransactionTypes.Input)
 
   return (
     <View style={{ flex: 1, padding: 24 }}>
@@ -16,6 +20,8 @@ export default function Transaction() {
       />
 
       <View style={{ marginTop: 32, gap: 24 }}>
+      <TransactionType selected={type} onChange={setType} />
+      
         <CurrencyInput label="Valor (R$)" value={0} />
 
         <Input
