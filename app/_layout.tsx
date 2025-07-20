@@ -1,3 +1,6 @@
+import LoadingInit from '@/components/loading-init';
+import { migrate } from '@/database/migrate';
+import { colors } from '@/theme';
 import {
   Inter_400Regular,
   Inter_500Medium,
@@ -5,9 +8,8 @@ import {
 } from '@expo-google-fonts/inter';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import LoadingInit from '@/components/loading-init';
-import 'react-native-reanimated';
+import { SQLiteProvider } from 'expo-sqlite';
+import { Suspense } from 'react';
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -21,12 +23,15 @@ export default function RootLayout() {
   }
 
   return (
-    <>
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </>
+    <Suspense fallback={<LoadingInit />}>
+      <SQLiteProvider databaseName="target.db" onInit={migrate} useSuspense>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: { backgroundColor: colors.white },
+          }}
+        />
+      </SQLiteProvider>
+    </Suspense>
   );
 }
