@@ -1,8 +1,9 @@
-import { colors } from '@/theme/colors'
+import { colors } from '@/theme'
 import { fontFamily } from '@/theme/fontFamily'
 import { LinearGradient } from 'expo-linear-gradient'
 import { StyleSheet, Text, View } from 'react-native'
 import { Separator } from './separator'
+import { Summary } from './summary'
 
 export type HomeHeaderProps = {
   total: string
@@ -24,6 +25,19 @@ export function HomeHeader({ data }: Props) {
       </View>
 
       <Separator color={colors.blue[400]} />
+
+      <View style={styles.summary}>
+        <Summary
+          data={{ label: 'Entradas', value: 'R$ 6.184,90' }}
+          icon={{ name: 'arrow-upward', color: colors.blue[400] }}
+        />
+
+        <Summary
+          isLeft
+          data={{ label: 'Saídas', value: '-R$ 883,65' }}
+          icon={{ name: 'arrow-downward', color: colors.red[400] }}
+        />
+      </View>
     </LinearGradient>
   )
 }
@@ -48,5 +62,11 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: colors.white,
     fontFamily: fontFamily.medium,
+  },
+  summary: {
+    width: '100%',
+    gap: 12,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 })
