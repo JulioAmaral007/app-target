@@ -1,0 +1,69 @@
+import { colors, fontFamily } from '@/theme'
+import {
+  FlatList,
+  FlatListProps,
+  StyleProp,
+  StyleSheet,
+  Text,
+  View,
+  ViewStyle,
+} from 'react-native'
+import { Separator } from './separator'
+
+type Props<T> = FlatListProps<T> & {
+  title: string
+  emptyMessage?: string
+  containerStyle?: StyleProp<ViewStyle>
+}
+
+export function List<T>({
+  title,
+  emptyMessage,
+  containerStyle,
+  data,
+  renderItem,
+  ...rest
+}: Props<T>) {
+  return (
+    <View style={[styles.container, containerStyle]}>
+      <Text style={styles.title}>{title}</Text>
+
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        ItemSeparatorComponent={() => <Separator color={colors.gray[200]} />}
+        contentContainerStyle={styles.listContent}
+        showsVerticalScrollIndicator={false}
+        ListEmptyComponent={() => (
+          <Text style={styles.empty}>{emptyMessage}</Text>
+        )}
+        {...rest}
+      />
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  listContent: {
+    gap: 16,
+    paddingTop: 16,
+    paddingBottom: 72,
+  },
+  title: {
+    marginTop: 24,
+    paddingBottom: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.gray[200],
+    fontSize: 18,
+    fontFamily: fontFamily.medium,
+    color: colors.black,
+  },
+  empty: {
+    fontSize: 14,
+    color: colors.gray[600],
+    fontFamily: fontFamily.regular,
+  },
+})
