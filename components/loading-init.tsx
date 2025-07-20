@@ -1,12 +1,12 @@
-import { Image, StyleSheet, View } from 'react-native';
 import { colors } from '@/theme/colors';
+import { Image, StyleSheet, View } from 'react-native';
 
 export default function LoadingInit() {
   return (
     <View style={styles.container}>
       <Image
         resizeMode="contain"
-        source={require('@/assets/images/splash-icon.png')}
+        source={require('@/assets/images/adaptive-icon.png')}
         style={styles.logo}
       />
     </View>

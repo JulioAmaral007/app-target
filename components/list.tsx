@@ -1,3 +1,4 @@
+import { colors, fontFamily } from '@/theme';
 import {
   FlatList,
   type FlatListProps,
@@ -7,7 +8,6 @@ import {
   View,
   type ViewStyle,
 } from 'react-native';
-import { colors, fontFamily } from '@/theme';
 import { Separator } from './separator';
 
 type Props<T> = FlatListProps<T> & {
@@ -63,5 +63,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: colors.gray[600],
     fontFamily: fontFamily.regular,
+    marginTop: 24,
   },
 });
