@@ -9,6 +9,7 @@ import {
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import { SQLiteProvider } from 'expo-sqlite';
+import { StatusBar } from 'expo-status-bar';
 import { Suspense } from 'react';
 
 export default function RootLayout() {
@@ -25,6 +26,7 @@ export default function RootLayout() {
   return (
     <Suspense fallback={<LoadingInit />}>
       <SQLiteProvider databaseName="target.db" onInit={migrate} useSuspense>
+        <StatusBar style="inverted" />
         <Stack
           screenOptions={{
             headerShown: false,
