@@ -1,23 +1,23 @@
-import { colors } from '@/theme'
-import { fontFamily } from '@/theme/fontFamily'
-import { LinearGradient } from 'expo-linear-gradient'
-import { StyleSheet, Text, View } from 'react-native'
-import { Separator } from './separator'
-import { Summary, SummaryProps } from './summary'
+import { LinearGradient } from 'expo-linear-gradient';
+import { StyleSheet, Text, View } from 'react-native';
+import { colors } from '@/theme';
+import { fontFamily } from '@/theme/fontFamily';
+import { Separator } from './separator';
+import { Summary, type SummaryProps } from './summary';
 
 export type HomeHeaderProps = {
-  total: string
-  input: SummaryProps
-  output: SummaryProps
-}
+  total: string;
+  input: SummaryProps;
+  output: SummaryProps;
+};
 
 type Props = {
-  data: HomeHeaderProps
-}
+  data: HomeHeaderProps;
+};
 
 export function HomeHeader({ data }: Props) {
   return (
-<LinearGradient
+    <LinearGradient
       colors={[colors.blue[500], colors.blue[800]]}
       style={styles.container}
     >
@@ -35,16 +35,14 @@ export function HomeHeader({ data }: Props) {
         />
 
         <Summary
-          isRight
           data={data.output}
           icon={{ name: 'arrow-downward', color: colors.red[400] }}
+          isRight
         />
       </View>
     </LinearGradient>
-  )
+  );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
@@ -71,4 +69,4 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-})
+});

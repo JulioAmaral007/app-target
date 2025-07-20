@@ -1,32 +1,32 @@
-import { colors, fontFamily } from '@/theme'
-import { TransactionTypes } from '@/utils/types'
-import { StyleSheet, View } from 'react-native'
-import { Option } from './option'
+import { StyleSheet, View } from 'react-native';
+import { colors, fontFamily } from '@/theme';
+import { TransactionTypes } from '@/utils/types';
+import { Option } from './option';
 
 type Props = {
-  selected: TransactionTypes
-  onChange: (type: TransactionTypes) => void
-}
+  selected: TransactionTypes;
+  onChange: (type: TransactionTypes) => void;
+};
 
 export function TransactionType({ selected, onChange }: Props) {
   return (
     <View style={styles.container}>
       <Option
         icon="arrow-upward"
-        title="Guardar"
         isSelected={selected === TransactionTypes.Input}
-        selectedColor={colors.blue[500]}
         onPress={() => onChange(TransactionTypes.Input)}
+        selectedColor={colors.blue[500]}
+        title="Guardar"
       />
       <Option
         icon="arrow-downward"
-        title="Resgatar"
         isSelected={selected === TransactionTypes.Output}
-        selectedColor={colors.red[400]}
         onPress={() => onChange(TransactionTypes.Output)}
+        selectedColor={colors.red[400]}
+        title="Resgatar"
       />
     </View>
-  )
+  );
 }
 
 export const styles = StyleSheet.create({
@@ -51,4 +51,4 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     color: colors.gray[500],
   },
-})
+});

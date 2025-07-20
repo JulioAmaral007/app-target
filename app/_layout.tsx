@@ -1,12 +1,12 @@
-import LoadingInit from '@/components/loading-init';
 import {
   Inter_400Regular,
   Inter_500Medium,
-  Inter_700Bold
+  Inter_700Bold,
 } from '@expo-google-fonts/inter';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import LoadingInit from '@/components/loading-init';
 import 'react-native-reanimated';
 
 export default function RootLayout() {
@@ -14,10 +14,10 @@ export default function RootLayout() {
     Inter_400Regular,
     Inter_500Medium,
     Inter_700Bold,
-  })
+  });
 
   if (!fontsLoaded) {
-    return <LoadingInit />
+    return <LoadingInit />;
   }
 
   return (
@@ -27,6 +27,6 @@ export default function RootLayout() {
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
-      </>
+    </>
   );
 }

@@ -1,25 +1,24 @@
-import { colors, fontFamily } from '@/theme'
-import { MaterialIcons } from '@expo/vector-icons'
+import { MaterialIcons } from '@expo/vector-icons';
 import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  TouchableOpacityProps,
-  View
-} from 'react-native'
-
+  type TouchableOpacityProps,
+  View,
+} from 'react-native';
+import { colors, fontFamily } from '@/theme';
 
 export type TargetProps = {
-  id?: string
-  name: string
-  percentage: string
-  current: string
-  target: string
-}
+  id?: string;
+  name: string;
+  percentage: string;
+  current: string;
+  target: string;
+};
 
 type Props = TouchableOpacityProps & {
-  data: TargetProps
-}
+  data: TargetProps;
+};
 
 export function Target({ data, ...rest }: Props) {
   return (
@@ -34,7 +33,7 @@ export function Target({ data, ...rest }: Props) {
 
       <MaterialIcons name="chevron-right" size={20} />
     </TouchableOpacity>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -60,4 +59,4 @@ const styles = StyleSheet.create({
     color: colors.gray[500],
     fontFamily: fontFamily.regular,
   },
-})
+});

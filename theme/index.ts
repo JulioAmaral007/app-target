@@ -1,4 +1,4 @@
-import { colors } from './colors'
-import { fontFamily } from './fontFamily'
+import { colors } from './colors';
+import { fontFamily } from './fontFamily';
 
-export { colors, fontFamily }
+export { colors, fontFamily };

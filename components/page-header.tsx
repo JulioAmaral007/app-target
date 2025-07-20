@@ -1,31 +1,31 @@
-import { colors, fontFamily } from '@/theme'
-import { MaterialIcons } from '@expo/vector-icons'
-import { router } from 'expo-router'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { MaterialIcons } from '@expo/vector-icons';
+import { router } from 'expo-router';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { colors, fontFamily } from '@/theme';
 
 type Props = {
-  title: string
-  subtitle?: string
+  title: string;
+  subtitle?: string;
   rightButton?: {
-    onPress: () => void
-    icon: keyof typeof MaterialIcons.glyphMap
-  }
-}
+    onPress: () => void;
+    icon: keyof typeof MaterialIcons.glyphMap;
+  };
+};
 
 export function PageHeader({ title, subtitle, rightButton }: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity activeOpacity={0.8} onPress={() => router.back()}>
-          <MaterialIcons name="arrow-back" size={24} color={colors.black} />
+          <MaterialIcons color={colors.black} name="arrow-back" size={24} />
         </TouchableOpacity>
 
         {rightButton && (
           <TouchableOpacity onPress={rightButton.onPress}>
             <MaterialIcons
+              color={colors.gray[500]}
               name={rightButton.icon}
               size={24}
-              color={colors.gray[500]}
             />
           </TouchableOpacity>
         )}
@@ -34,9 +34,8 @@ export function PageHeader({ title, subtitle, rightButton }: Props) {
       <Text style={styles.title}>{title}</Text>
       {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
     </View>
-  )
+  );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -60,4 +59,4 @@ const styles = StyleSheet.create({
     color: colors.gray[500],
     fontFamily: fontFamily.regular,
   },
-})
+});

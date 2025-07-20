@@ -1,18 +1,17 @@
-import { Button } from '@/components/button'
-import { List } from '@/components/list'
-import { PageHeader } from '@/components/page-header'
-import { Progress } from '@/components/progress'
-import { Transaction, TransactionProps } from '@/components/transaction'
-import { TransactionTypes } from '@/utils/types'
-import { router, useLocalSearchParams } from 'expo-router'
-import { View } from 'react-native'
+import { router, useLocalSearchParams } from 'expo-router';
+import { View } from 'react-native';
+import { Button } from '@/components/button';
+import { List } from '@/components/list';
+import { PageHeader } from '@/components/page-header';
+import { Progress } from '@/components/progress';
+import { Transaction, type TransactionProps } from '@/components/transaction';
+import { TransactionTypes } from '@/utils/types';
 
 const details = {
   current: 'R$ 580,00',
   target: 'R$ 1.780,00',
   percentage: 25,
-}
-
+};
 
 const transactions: TransactionProps[] = [
   {
@@ -28,36 +27,36 @@ const transactions: TransactionProps[] = [
     description: 'CDB de 110% no banco XPTO',
     type: TransactionTypes.Input,
   },
-]
+];
 
 export default function InProgress() {
-  const params = useLocalSearchParams<{ id: string }>()
+  const params = useLocalSearchParams<{ id: string }>();
 
   return (
     <View style={{ flex: 1, padding: 24, gap: 32 }}>
       <PageHeader
-        title="Apple Watch"
         rightButton={{
           icon: 'edit',
           onPress: () => {},
         }}
+        title="Apple Watch"
       />
 
       <Progress data={details} />
 
       <List
-        title="Transações"
         data={transactions}
+        emptyMessage="Nenhuma transação. Toque em nova transação para guardar seu primeiro dinheiro aqui."
         renderItem={({ item }) => (
           <Transaction data={item} onRemove={() => {}} />
         )}
-        emptyMessage="Nenhuma transação. Toque em nova transação para guardar seu primeiro dinheiro aqui."
-        />
-  
-        <Button
-          title="Nova transação"
-          onPress={() => router.navigate(`/transaction/${params.id}`)}
-        />
+        title="Transações"
+      />
+
+      <Button
+        onPress={() => router.navigate(`/transaction/${params.id}`)}
+        title="Nova transação"
+      />
     </View>
-  )
+  );
 }

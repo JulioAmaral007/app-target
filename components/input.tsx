@@ -1,9 +1,15 @@
-import { colors, fontFamily } from '@/theme'
-import { StyleSheet, Text, TextInput, TextInputProps, View } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  type TextInputProps,
+  View,
+} from 'react-native';
+import { colors, fontFamily } from '@/theme';
 
 type Props = TextInputProps & {
-  label: string
-}
+  label: string;
+};
 
 export function Input({ label, ...rest }: Props) {
   return (
@@ -11,12 +17,12 @@ export function Input({ label, ...rest }: Props) {
       <Text style={styles.label}>{label}</Text>
 
       <TextInput
-        style={styles.input}
         placeholderTextColor={colors.gray[400]}
+        style={styles.input}
         {...rest}
       />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -37,4 +43,4 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: colors.gray[300],
   },
-})
+});

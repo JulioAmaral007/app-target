@@ -1,17 +1,16 @@
-
-import { colors } from '@/theme/colors'
-import { Image, StyleSheet, View } from 'react-native'
+import { Image, StyleSheet, View } from 'react-native';
+import { colors } from '@/theme/colors';
 
 export default function LoadingInit() {
   return (
     <View style={styles.container}>
       <Image
-        style={styles.logo}
         resizeMode="contain"
         source={require('@/assets/images/splash-icon.png')}
+        style={styles.logo}
       />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -25,4 +24,4 @@ const styles = StyleSheet.create({
     height: '20%',
     aspectRatio: 1,
   },
-})
+});

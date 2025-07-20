@@ -1,35 +1,34 @@
-import { colors, fontFamily } from '@/theme'
 import {
   ActivityIndicator,
   StyleSheet,
   Text,
   TouchableOpacity,
-  TouchableOpacityProps
-} from 'react-native'
-
+  type TouchableOpacityProps,
+} from 'react-native';
+import { colors, fontFamily } from '@/theme';
 
 type Props = TouchableOpacityProps & {
-  title: string
-  isProcessing?: boolean
-}
+  title: string;
+  isProcessing?: boolean;
+};
 
 export function Button({ title, isProcessing = false, ...rest }: Props) {
   return (
     <TouchableOpacity
-      style={styles.container}
       activeOpacity={0.7}
       disabled={isProcessing}
+      style={styles.container}
       {...rest}
     >
       <Text style={styles.title}>
         {isProcessing ? (
-          <ActivityIndicator size="small" color={colors.white} />
+          <ActivityIndicator color={colors.white} size="small" />
         ) : (
           title
         )}
       </Text>
     </TouchableOpacity>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -46,4 +45,4 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: colors.white,
   },
-})
+});

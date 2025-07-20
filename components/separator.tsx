@@ -1,7 +1,7 @@
-import { ColorValue, StyleSheet, View } from 'react-native'
+import { type ColorValue, StyleSheet, View } from 'react-native';
 
 export function Separator({ color }: { color: ColorValue }) {
-  return <View style={[styles.container, { backgroundColor: color }]} />
+  return <View style={[styles.container, { backgroundColor: color }]} />;
 }
 
 const styles = StyleSheet.create({
@@ -9,4 +9,4 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 1,
   },
-})
+});

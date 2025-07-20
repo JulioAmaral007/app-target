@@ -1,15 +1,15 @@
-import { colors, fontFamily } from '@/theme'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native';
+import { colors, fontFamily } from '@/theme';
 
 type SaveValue = {
-  current: string
-  target: string
-  percentage: number
-}
+  current: string;
+  target: string;
+  percentage: number;
+};
 
 type Props = {
-  data: SaveValue
-}
+  data: SaveValue;
+};
 
 export function Progress({ data }: Props) {
   return (
@@ -32,7 +32,7 @@ export function Progress({ data }: Props) {
         />
       </View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
     height: 5,
     backgroundColor: colors.blue[500],
   },
-})
+});
